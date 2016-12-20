@@ -1,0 +1,354 @@
+#include <self-reliance.h>
+
+
+#include <pthread.h>
+
+
+//#define TASK_COUNT			512
+
+
+typedef struct Packet{
+	int id;
+	int size;
+	uint8_t *data;
+	sr___node___t node;
+}Packet;
+
+
+typedef struct Task{
+	int id;
+	bool running;
+	pthread_t producer;
+	pthread_t consumers;
+	sr___queue___t *queue;
+}Task;
+
+
+static uint64_t malloc_count = 0;
+
+
+static void node_release(sr___node___t *node){
+	if (node){
+		Packet *pkt = (Packet*)(node->content);
+		srfree(pkt->data);
+		srfree(pkt);
+	}
+}
+
+
+static void* producer(void *p)
+{
+	int result = 0;
+
+//	void *add = srmalloc(1024 * 1024 * 2);
+
+	Packet *pkt = NULL;
+	Task *task = (Task*)p;
+
+	log_info("producer enter %d\n", task->id);
+
+	task->running = true;
+
+	while(ISTRUE(task->running)){
+		pkt = (Packet*)srmalloc(sizeof(Packet));
+		if (pkt == NULL){
+			log_error(ERRMEMORY);
+			break;
+		}
+		malloc_count ++;
+		pkt->id = task->id;
+		pkt->size = 2048;
+		pkt->data = (uint8_t*)srmalloc(pkt->size);
+		if (pkt->data == NULL){
+			log_error(ERRMEMORY);
+			break;
+		}
+		malloc_count ++;
+		snprintf(pkt->data, pkt->size, "producer id = %d malloc count = %lu\n", task->id, malloc_count);
+		pkt->node.content = pkt;
+		pkt->node.release = node_release;
+		while ((result = sr___queue___push_end(task->queue, &(pkt->node))) != 0){
+			if (result == ERRTRYAGAIN){
+				if (ISTRUE(task->running)){
+					nanosleep((const struct timespec[]){{0, 1L}}, NULL);
+					continue;
+				}
+			}
+			SETFALSE(task->running);
+			srfree(pkt->data);
+			srfree(pkt);
+			break;
+		}
+	}
+
+	sr___queue___clean(task->queue);
+
+	log_info("producer exit %d\n", task->id);
+
+	return NULL;
+}
+
+static void* consumers(void *p)
+{
+	int result = 0;
+
+	sr___node___t *node = NULL;
+	Packet *pkt = NULL;
+	Task *task = (Task*)p;
+
+	log_info("consumers enter %d\n", task->id);
+
+	task->running = true;
+
+	while(ISTRUE(task->running)){
+		while ((result = sr___queue___pop_first(task->queue, &node)) != 0){
+			if (result == ERRTRYAGAIN){
+				if (ISTRUE(task->running)){
+					nanosleep((const struct timespec[]){{0, 1L}}, NULL);
+					continue;
+				}
+			}
+			SETFALSE(task->running);
+			break;
+		}
+		if (result == 0){
+			pkt = (Packet*)(node->content);
+//			log_info("%s\n", pkt->data);
+			srfree(pkt->data);
+			srfree(pkt);
+		}
+	}
+
+	sr___queue___clean(task->queue);
+
+	log_info("consumers exit %d\n", task->id);
+
+	return NULL;
+}
+
+
+void* stress_testing_one(int nb_task){
+
+	int i = 0;
+	int error = 0;
+	int task_count = nb_task;
+
+	error = sr___memory___initialize(1024 * 1024 * 2);
+	if (error != 0){
+		return 0;
+	}
+
+//	char *temp = srmalloc(1024);
+
+	int64_t timing_start = sr___start_timing();
+	int64_t used_time = 0;
+
+	Task list[task_count];
+
+	for (i = 0; i < task_count; ++i){
+		sr___queue___create(10240, &(list[i].queue));
+		list[i].id = i;
+		pthread_create(&(list[i].consumers), NULL, consumers, &(list[i]));
+		pthread_create(&(list[i].producer), NULL, producer, &(list[i]));
+	}
+
+	nanosleep((const struct timespec[]){{10, 1000L}}, NULL);
+
+	used_time = sr___complete_timing(timing_start);
+
+	log_info("used time %ld malloc count %lu\n", used_time, malloc_count);
+
+	for (i = 0; i < task_count; ++i){
+		SETFALSE(list[i].running);
+	}
+
+	for (i = 0; i < task_count; ++i){
+		pthread_join(list[i].producer, NULL);
+		pthread_join(list[i].consumers, NULL);
+	}
+
+	log_info("pthread_join 									OK\n");
+
+	for (i = 0; i < task_count; ++i){
+		sr___queue___release(&(list[i].queue));
+	}
+
+	sr___memory___release();
+
+	used_time = sr___complete_timing(timing_start);
+
+
+	return NULL;
+}
+
+
+void* stress_testing_two(int producer_count, int consumers_count)
+{
+	int i;
+	int result = 0;
+	int c_number = producer_count;
+	int p_number = consumers_count;
+
+	sr___memory___initialize(1024 * 1024 * 4);
+
+	sr___queue___t *queue = NULL;
+	Task plist[p_number];
+	Task clist[c_number];
+
+	sr___queue___create(10240, &(queue));
+
+	for (i = 0; i < p_number; ++i){
+		plist[i].id = i;
+		plist[i].queue = queue;
+		pthread_create(&(plist[i].producer), NULL, producer, &(plist[i]));
+	}
+
+	log_debug("create producer 									OK\n");
+
+	for (i = 0; i < c_number; ++i){
+		clist[i].id = i;
+		clist[i].queue = queue;
+		pthread_create(&(clist[i].consumers), NULL, consumers, &(clist[i]));
+	}
+
+	log_debug("create consumers 								OK\n");
+
+	nanosleep((const struct timespec[]){{10, 1000L}}, NULL);
+
+
+	for (i = 0; i < p_number; ++i){
+		SETFALSE(plist[i].running);
+	}
+
+	log_debug("stop producer 								OK\n");
+
+	for (i = 0; i < c_number; ++i){
+		SETFALSE(clist[i].running);
+	}
+
+	log_debug("stop consumers 								OK\n");
+
+	for (i = 0; i < p_number; ++i){
+		pthread_join(plist[i].producer, NULL);
+		log_debug("pthread_join producer %d\n", i);
+	}
+
+	log_debug("release producer 								OK\n");
+
+	for (i = 0; i < c_number; ++i){
+		pthread_join(clist[i].consumers, NULL);
+		log_debug("pthread_join consumers %d\n", i);
+	}
+
+	log_debug("release consumers 								OK\n");
+
+	sr___queue___release(&(queue));
+
+	sr___memory___release();
+
+	return NULL;
+}
+
+
+static bool pipe_write_thread_running = false;
+
+void* pipe_write_thread(void *p)
+{
+	int result = 0;
+	int size = 1024;
+	char buf[1024];
+	sr___pipe___t *pipe = (sr___pipe___t *)p;
+
+	while (ISTRUE(pipe_write_thread_running)){
+		memset(buf, '1', 1024);
+		for(result = 0; result < size; ){
+			result += sr___pipe___write(pipe, buf + result, size - result);
+			if (ISFALSE(pipe_write_thread_running)){
+				break;
+			}
+			if (result != size){
+				log_debug("result %d size %d\n", result, size);
+			}
+		}
+	}
+
+	return NULL;
+}
+
+void* pipe_read_thread(void *p)
+{
+	int result = 0;
+	int size = 32;
+	sr___pipe___t *pipe = (sr___pipe___t *)p;
+	char buf[4096];
+
+	while (ISTRUE(pipe_write_thread_running)){
+		for (result = 0; result < size;){
+			result += sr___pipe___read(pipe, buf + result, size - result);
+			if (ISFALSE(pipe_write_thread_running)){
+				break;
+			}
+			if (result != size){
+				log_debug("result %d size %d\n", result, size);
+			}
+		}
+		buf[size - 1] = '\0';
+//		log_info("%d=%s\n", result, buf);
+	}
+
+	return NULL;
+}
+
+int testing_pipe()
+{
+	int result = 0;
+	pthread_t write_tid = 0;
+	pthread_t read_tid = 0;
+	sr___pipe___t *pipe = NULL;
+
+	sr___memory___initialize(1024 * 1024 * 2);
+
+	result = sr___pipe___create(10240, &pipe);
+
+	if (result != 0){
+		log_error(result);
+		return result;
+	}
+
+	pipe_write_thread_running = true;
+	pthread_create(&read_tid, NULL, pipe_read_thread, pipe);
+	pthread_create(&write_tid, NULL, pipe_write_thread, pipe);
+
+
+	nanosleep((const struct timespec[]){{10, 1000L}}, NULL);
+
+
+	SETFALSE(pipe_write_thread_running);
+
+	log_debug("phtread join write thread\n");
+
+	pthread_join(write_tid, NULL);
+
+	log_debug("phtread join read thread\n");
+
+	pthread_join(read_tid, NULL);
+
+	sr___pipe___release(&pipe);
+
+	sr___memory___release();
+
+	return 0;
+}
+
+
+int main(int argc, char *argv[])
+{
+	for (int i = 0; i < 100; ++i){
+		stress_testing_one(128);
+		log_warning("stress_testing_one ====================================================================================== %d\n", i);
+	}
+
+//	stress_testing_two(2, 1000);
+//	testing_pipe();
+	return 0;
+}

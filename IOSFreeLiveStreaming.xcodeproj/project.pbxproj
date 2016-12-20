@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ABCCE2021DEF04C900099C43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCCE2011DEF04C900099C43 /* main.m */; };
+		ABCCE2051DEF04C900099C43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCCE2041DEF04C900099C43 /* AppDelegate.m */; };
+		ABCCE2081DEF04C900099C43 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCCE2071DEF04C900099C43 /* ViewController.m */; };
+		ABCCE20B1DEF04C900099C43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABCCE2091DEF04C900099C43 /* Main.storyboard */; };
+		ABCCE20D1DEF04C900099C43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABCCE20C1DEF04C900099C43 /* Assets.xcassets */; };
+		ABCCE2101DEF04C900099C43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABCCE20E1DEF04C900099C43 /* LaunchScreen.storyboard */; };
+		ABCCE21B1DEF04C900099C43 /* IOSFreeLiveStreamingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCCE21A1DEF04C900099C43 /* IOSFreeLiveStreamingTests.m */; };
+		ABCCE2261DEF04C900099C43 /* IOSFreeLiveStreamingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCCE2251DEF04C900099C43 /* IOSFreeLiveStreamingUITests.m */; };
+		ABE5D5321DF99DC4000A9885 /* MyFreeLiveStreamingFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCCE25D1DEF056800099C43 /* MyFreeLiveStreamingFramework.framework */; };
+		ABE5D5331DF99DC4000A9885 /* MyFreeLiveStreamingFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ABCCE25D1DEF056800099C43 /* MyFreeLiveStreamingFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ABCCE2171DEF04C900099C43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABCCE1F51DEF04C900099C43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABCCE1FC1DEF04C900099C43;
+			remoteInfo = IOSFreeLiveStreaming;
+		};
+		ABCCE2221DEF04C900099C43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABCCE1F51DEF04C900099C43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABCCE1FC1DEF04C900099C43;
+			remoteInfo = IOSFreeLiveStreaming;
+		};
+		ABCCE25C1DEF056800099C43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABCCE2571DEF056800099C43 /* MyFreeLiveStreamingFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ABCCE23D1DEF053700099C43;
+			remoteInfo = MyFreeLiveStreamingFramework;
+		};
+		ABCCE25E1DEF056800099C43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABCCE2571DEF056800099C43 /* MyFreeLiveStreamingFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ABCCE2461DEF053800099C43;
+			remoteInfo = MyFreeLiveStreamingFrameworkTests;
+		};
+		ABE5D5341DF99DC4000A9885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABCCE2571DEF056800099C43 /* MyFreeLiveStreamingFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = ABCCE23C1DEF053700099C43;
+			remoteInfo = MyFreeLiveStreamingFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ABE5D5361DF99DC4000A9885 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ABE5D5331DF99DC4000A9885 /* MyFreeLiveStreamingFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		ABCCE1FD1DEF04C900099C43 /* IOSFreeLiveStreaming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSFreeLiveStreaming.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABCCE2011DEF04C900099C43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ABCCE2031DEF04C900099C43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ABCCE2041DEF04C900099C43 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ABCCE2061DEF04C900099C43 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		ABCCE2071DEF04C900099C43 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		ABCCE20A1DEF04C900099C43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ABCCE20C1DEF04C900099C43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ABCCE20F1DEF04C900099C43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ABCCE2111DEF04C900099C43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABCCE2161DEF04C900099C43 /* IOSFreeLiveStreamingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSFreeLiveStreamingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABCCE21A1DEF04C900099C43 /* IOSFreeLiveStreamingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSFreeLiveStreamingTests.m; sourceTree = "<group>"; };
+		ABCCE21C1DEF04C900099C43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABCCE2211DEF04C900099C43 /* IOSFreeLiveStreamingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSFreeLiveStreamingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABCCE2251DEF04C900099C43 /* IOSFreeLiveStreamingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSFreeLiveStreamingUITests.m; sourceTree = "<group>"; };
+		ABCCE2271DEF04C900099C43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABCCE2571DEF056800099C43 /* MyFreeLiveStreamingFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MyFreeLiveStreamingFramework.xcodeproj; path = MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ABCCE1FA1DEF04C900099C43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABE5D5321DF99DC4000A9885 /* MyFreeLiveStreamingFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABCCE2131DEF04C900099C43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABCCE21E1DEF04C900099C43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ABCCE1F41DEF04C900099C43 = {
+			isa = PBXGroup;
+			children = (
+				ABCCE1FF1DEF04C900099C43 /* IOSFreeLiveStreaming */,
+				ABCCE2191DEF04C900099C43 /* IOSFreeLiveStreamingTests */,
+				ABCCE2241DEF04C900099C43 /* IOSFreeLiveStreamingUITests */,
+				ABCCE1FE1DEF04C900099C43 /* Products */,
+				ABCCE2571DEF056800099C43 /* MyFreeLiveStreamingFramework.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		ABCCE1FE1DEF04C900099C43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABCCE1FD1DEF04C900099C43 /* IOSFreeLiveStreaming.app */,
+				ABCCE2161DEF04C900099C43 /* IOSFreeLiveStreamingTests.xctest */,
+				ABCCE2211DEF04C900099C43 /* IOSFreeLiveStreamingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABCCE1FF1DEF04C900099C43 /* IOSFreeLiveStreaming */ = {
+			isa = PBXGroup;
+			children = (
+				ABCCE2031DEF04C900099C43 /* AppDelegate.h */,
+				ABCCE2041DEF04C900099C43 /* AppDelegate.m */,
+				ABCCE2061DEF04C900099C43 /* ViewController.h */,
+				ABCCE2071DEF04C900099C43 /* ViewController.m */,
+				ABCCE2091DEF04C900099C43 /* Main.storyboard */,
+				ABCCE20C1DEF04C900099C43 /* Assets.xcassets */,
+				ABCCE20E1DEF04C900099C43 /* LaunchScreen.storyboard */,
+				ABCCE2111DEF04C900099C43 /* Info.plist */,
+				ABCCE2001DEF04C900099C43 /* Supporting Files */,
+			);
+			path = IOSFreeLiveStreaming;
+			sourceTree = "<group>";
+		};
+		ABCCE2001DEF04C900099C43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABCCE2011DEF04C900099C43 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABCCE2191DEF04C900099C43 /* IOSFreeLiveStreamingTests */ = {
+			isa = PBXGroup;
+			children = (
+				ABCCE21A1DEF04C900099C43 /* IOSFreeLiveStreamingTests.m */,
+				ABCCE21C1DEF04C900099C43 /* Info.plist */,
+			);
+			path = IOSFreeLiveStreamingTests;
+			sourceTree = "<group>";
+		};
+		ABCCE2241DEF04C900099C43 /* IOSFreeLiveStreamingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ABCCE2251DEF04C900099C43 /* IOSFreeLiveStreamingUITests.m */,
+				ABCCE2271DEF04C900099C43 /* Info.plist */,
+			);
+			path = IOSFreeLiveStreamingUITests;
+			sourceTree = "<group>";
+		};
+		ABCCE2581DEF056800099C43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABCCE25D1DEF056800099C43 /* MyFreeLiveStreamingFramework.framework */,
+				ABCCE25F1DEF056800099C43 /* MyFreeLiveStreamingFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ABCCE1FC1DEF04C900099C43 /* IOSFreeLiveStreaming */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABCCE22A1DEF04C900099C43 /* Build configuration list for PBXNativeTarget "IOSFreeLiveStreaming" */;
+			buildPhases = (
+				ABCCE1F91DEF04C900099C43 /* Sources */,
+				ABCCE1FA1DEF04C900099C43 /* Frameworks */,
+				ABCCE1FB1DEF04C900099C43 /* Resources */,
+				ABE5D5361DF99DC4000A9885 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABE5D5351DF99DC4000A9885 /* PBXTargetDependency */,
+			);
+			name = IOSFreeLiveStreaming;
+			productName = IOSFreeLiveStreaming;
+			productReference = ABCCE1FD1DEF04C900099C43 /* IOSFreeLiveStreaming.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ABCCE2151DEF04C900099C43 /* IOSFreeLiveStreamingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABCCE22D1DEF04C900099C43 /* Build configuration list for PBXNativeTarget "IOSFreeLiveStreamingTests" */;
+			buildPhases = (
+				ABCCE2121DEF04C900099C43 /* Sources */,
+				ABCCE2131DEF04C900099C43 /* Frameworks */,
+				ABCCE2141DEF04C900099C43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABCCE2181DEF04C900099C43 /* PBXTargetDependency */,
+			);
+			name = IOSFreeLiveStreamingTests;
+			productName = IOSFreeLiveStreamingTests;
+			productReference = ABCCE2161DEF04C900099C43 /* IOSFreeLiveStreamingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ABCCE2201DEF04C900099C43 /* IOSFreeLiveStreamingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABCCE2301DEF04C900099C43 /* Build configuration list for PBXNativeTarget "IOSFreeLiveStreamingUITests" */;
+			buildPhases = (
+				ABCCE21D1DEF04C900099C43 /* Sources */,
+				ABCCE21E1DEF04C900099C43 /* Frameworks */,
+				ABCCE21F1DEF04C900099C43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABCCE2231DEF04C900099C43 /* PBXTargetDependency */,
+			);
+			name = IOSFreeLiveStreamingUITests;
+			productName = IOSFreeLiveStreamingUITests;
+			productReference = ABCCE2211DEF04C900099C43 /* IOSFreeLiveStreamingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ABCCE1F51DEF04C900099C43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "陈龙";
+				TargetAttributes = {
+					ABCCE1FC1DEF04C900099C43 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 745MTD3TZ6;
+						ProvisioningStyle = Automatic;
+					};
+					ABCCE2151DEF04C900099C43 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = ABCCE1FC1DEF04C900099C43;
+					};
+					ABCCE2201DEF04C900099C43 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = ABCCE1FC1DEF04C900099C43;
+					};
+				};
+			};
+			buildConfigurationList = ABCCE1F81DEF04C900099C43 /* Build configuration list for PBXProject "IOSFreeLiveStreaming" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ABCCE1F41DEF04C900099C43;
+			productRefGroup = ABCCE1FE1DEF04C900099C43 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = ABCCE2581DEF056800099C43 /* Products */;
+					ProjectRef = ABCCE2571DEF056800099C43 /* MyFreeLiveStreamingFramework.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				ABCCE1FC1DEF04C900099C43 /* IOSFreeLiveStreaming */,
+				ABCCE2151DEF04C900099C43 /* IOSFreeLiveStreamingTests */,
+				ABCCE2201DEF04C900099C43 /* IOSFreeLiveStreamingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		ABCCE25D1DEF056800099C43 /* MyFreeLiveStreamingFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MyFreeLiveStreamingFramework.framework;
+			remoteRef = ABCCE25C1DEF056800099C43 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ABCCE25F1DEF056800099C43 /* MyFreeLiveStreamingFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MyFreeLiveStreamingFrameworkTests.xctest;
+			remoteRef = ABCCE25E1DEF056800099C43 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ABCCE1FB1DEF04C900099C43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABCCE2101DEF04C900099C43 /* LaunchScreen.storyboard in Resources */,
+				ABCCE20D1DEF04C900099C43 /* Assets.xcassets in Resources */,
+				ABCCE20B1DEF04C900099C43 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABCCE2141DEF04C900099C43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABCCE21F1DEF04C900099C43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ABCCE1F91DEF04C900099C43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABCCE2081DEF04C900099C43 /* ViewController.m in Sources */,
+				ABCCE2051DEF04C900099C43 /* AppDelegate.m in Sources */,
+				ABCCE2021DEF04C900099C43 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABCCE2121DEF04C900099C43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABCCE21B1DEF04C900099C43 /* IOSFreeLiveStreamingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABCCE21D1DEF04C900099C43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABCCE2261DEF04C900099C43 /* IOSFreeLiveStreamingUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ABCCE2181DEF04C900099C43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABCCE1FC1DEF04C900099C43 /* IOSFreeLiveStreaming */;
+			targetProxy = ABCCE2171DEF04C900099C43 /* PBXContainerItemProxy */;
+		};
+		ABCCE2231DEF04C900099C43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABCCE1FC1DEF04C900099C43 /* IOSFreeLiveStreaming */;
+			targetProxy = ABCCE2221DEF04C900099C43 /* PBXContainerItemProxy */;
+		};
+		ABE5D5351DF99DC4000A9885 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MyFreeLiveStreamingFramework;
+			targetProxy = ABE5D5341DF99DC4000A9885 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ABCCE2091DEF04C900099C43 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABCCE20A1DEF04C900099C43 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ABCCE20E1DEF04C900099C43 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABCCE20F1DEF04C900099C43 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ABCCE2281DEF04C900099C43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ABCCE2291DEF04C900099C43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ABCCE22B1DEF04C900099C43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 745MTD3TZ6;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/baseClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Recoder/imClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Video/H264HardEncoder\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Video/videoCapture/imClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Audio/AACEncoder\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Audio/audioCapture/imClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Player/imClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Player",
+				);
+				INFOPLIST_FILE = IOSFreeLiveStreaming/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.longkuangaoba.wwwmyselfbiaobo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ABCCE22C1DEF04C900099C43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 745MTD3TZ6;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/baseClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Recoder/imClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Video/H264HardEncoder\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Video/videoCapture/imClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Audio/AACEncoder\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Audio/audioCapture/imClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Player/imClasses\"",
+					"\"MyFreeLiveStreamingFramework/MyFreeLiveStreamingFramework/Classes/Player",
+				);
+				INFOPLIST_FILE = IOSFreeLiveStreaming/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.longkuangaoba.wwwmyselfbiaobo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		ABCCE22E1DEF04C900099C43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = IOSFreeLiveStreamingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.longkuangaoba.www.IOSFreeLiveStreamingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOSFreeLiveStreaming.app/IOSFreeLiveStreaming";
+			};
+			name = Debug;
+		};
+		ABCCE22F1DEF04C900099C43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = IOSFreeLiveStreamingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.longkuangaoba.www.IOSFreeLiveStreamingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOSFreeLiveStreaming.app/IOSFreeLiveStreaming";
+			};
+			name = Release;
+		};
+		ABCCE2311DEF04C900099C43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = IOSFreeLiveStreamingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.longkuangaoba.www.IOSFreeLiveStreamingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = IOSFreeLiveStreaming;
+			};
+			name = Debug;
+		};
+		ABCCE2321DEF04C900099C43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = IOSFreeLiveStreamingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.longkuangaoba.www.IOSFreeLiveStreamingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = IOSFreeLiveStreaming;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ABCCE1F81DEF04C900099C43 /* Build configuration list for PBXProject "IOSFreeLiveStreaming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABCCE2281DEF04C900099C43 /* Debug */,
+				ABCCE2291DEF04C900099C43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABCCE22A1DEF04C900099C43 /* Build configuration list for PBXNativeTarget "IOSFreeLiveStreaming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABCCE22B1DEF04C900099C43 /* Debug */,
+				ABCCE22C1DEF04C900099C43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABCCE22D1DEF04C900099C43 /* Build configuration list for PBXNativeTarget "IOSFreeLiveStreamingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABCCE22E1DEF04C900099C43 /* Debug */,
+				ABCCE22F1DEF04C900099C43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABCCE2301DEF04C900099C43 /* Build configuration list for PBXNativeTarget "IOSFreeLiveStreamingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABCCE2311DEF04C900099C43 /* Debug */,
+				ABCCE2321DEF04C900099C43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ABCCE1F51DEF04C900099C43 /* Project object */;
+}

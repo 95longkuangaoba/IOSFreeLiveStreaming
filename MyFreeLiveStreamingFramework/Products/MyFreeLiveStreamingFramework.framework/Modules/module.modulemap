@@ -1,0 +1,6 @@
+framework module MyFreeLiveStreamingFramework {
+  umbrella header "MyFreeLiveStreamingFramework.h"
+
+  export *
+  module * { export * }
+}
