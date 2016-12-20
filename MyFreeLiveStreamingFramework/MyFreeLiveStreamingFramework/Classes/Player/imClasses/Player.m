@@ -151,7 +151,7 @@
                     
                     //[self play:samplebuffer length:info->samples*info->channels];
                    // [self delegateFillPCMBuffer:self];
-                    [self delegateFillcallback:PCMBuffer daili:self];
+                    //[self delegateFillcallback:PCMBuffer daili:self];
                     
                     NSLog(@"sample_size");
                 }];
@@ -349,10 +349,19 @@ static void player_send_event(sr___media_event_callback___t *listenercb,sr___med
 }
 
 
--(void)audioPlay
+-(int)audioPlay
 {
-   
+    OSStatus status = AudioQueueStart(audioQueue, NULL);
+    if (status != noErr) {
+        return -1;
+    }
+    return 0;
 
+}
+-(void)audioClose
+{
+    AudioQueueStop(audioQueue, true);
+    audioQueue = nil;
 }
 
 
@@ -374,113 +383,134 @@ static void player_send_event(sr___media_event_callback___t *listenercb,sr___med
 
 #pragma mark -- AUDIOQUEUE
 
+//
+//static void BufferCallback(void * inUserData,AudioQueueRef inAQ,AudioQueueBufferRef buffer)
+//{
+//    NSLog(@"处理了音频数据大小为：%u",(unsigned int)buffer->mAudioDataByteSize);
+//    Player * myplayer = (__bridge Player *)inUserData;
+//    [myplayer.delegate fillPCMBuffer:myplayer->samplebuffer bufferSize:myplayer->samplebuffer_size];
+//    //[myplayer.de]
+//    
+//}
+//
+//
+///*
+//-(void)fillBuffer:(AudioQueueRef)audioQueue queueBuffer:(AudioQueueBufferRef)buffer
+//{
+//    if (audioDataCurrent + AUDIO_MIN_SIZE_PER_FRAME <audioDataLength) {
+//        if (audioDataCurrent + AUDIO_MIN_SIZE_PER_FRAME  >4096) {
+//            memcpy(buffer->mAudioData, zhBuffer+(audioDataCurrent % AUDIO_MIN_SIZE_PER_FRAME), (AUDIO_MIN_SIZE_PER_FRAME - audioDataCurrent));
+//            audioDataCurrent = 0;
+//            buffer->mAudioDataByteSize = (AUDIO_MIN_SIZE_PER_FRAME - audioDataCurrent);
+//        }
+//        memcpy(buffer->mAudioData, zhBuffer + (audioDataCurrent % 5000), AUDIO_MIN_SIZE_PER_FRAME);
+//        AudioQueueEnqueueBuffer(audioQueue, buffer, 0, NULL);
+//    }
+//    
+//    
+//}
+// 
+// */
+//
+//
+//-(int)delegateFillcallback:PCMBuffer daili:(id<PlayerDelegate>)callback
+//{
+//    callback = _delegate;
+//    
+//    OSStatus status = AudioQueueNewOutput(&audioDesc, BufferCallback, (__bridge void *)self, NULL, NULL, 0, &audioQueue);
+//    if (status != noErr) {
+//        return -1;
+//    }
+//    for (int i = 0; i<AUDIO_BUFFER_SIZE; i++) {
+//        status = AudioQueueAllocateBuffer(audioQueue, AUDIO_MIN_SIZE_PER_FRAME, &inAudioBuffers[i]);
+////        if (status == noErr) {
+////            status = AudioQueueEnqueueBuffer(audioQueue, inAudioBuffers[i], 0, NULL);
+////        }
+//    }
+//    return 0;
+//}
+//
+//
+//
+////-(void)createAudioQueue
+////{
+////    [self audioCleanup];
+////    
+////    AudioQueueNewOutput(&(audioDesc), BufferCallback, (__bridge void *)self, nil, nil, 0, &audioQueue);
+////    if (audioQueue) {
+////        //添加buffer区
+////        for (int i = 0; i<AUDIO_MIN_SIZE_PER_FRAME; i++) {
+////            int result = AudioQueueAllocateBuffer(audioQueue, AUDIO_MIN_SIZE_PER_FRAME, &inAudioBuffers[i]);
+////            NSLog(@"audioQueueAllocateBuffer  i = %d result = %d",i,result);
+////        }
+////    }
+////    
+////}
+//
+//-(void)audioCleanup
+//{
+//    if (audioQueue) {
+//        [self stopAudio];
+//        for (int i =0; i< AUDIO_BUFFER_SIZE; i++) {
+//            AudioQueueFreeBuffer(audioQueue,inAudioBuffers[i]);
+//            inAudioBuffers[i] = nil;
+//        }
+//        audioQueue = nil;
+//    }
+//}
+//
+//-(void)stopAudio
+//{
+//    AudioQueueFlush(audioQueue);
+//    AudioQueueReset(audioQueue);
+//    AudioQueueStop(audioQueue, true);
+//}
+//
+//
+//
+//-(int)PCMBuffer:(uint8_t *)buffer bufferSize:(uint32_t)size
+//{
+//    AudioQueueBufferRef  myaudioBuffer =NULL;
+//    myaudioBuffer->mAudioDataByteSize = size;
+//    //(Byte *)myaudioBuffer->mAudioData = (Byte *)buffer;
+//    Byte * audioData = (Byte *)myaudioBuffer->mAudioData;
+//    for (int i = 0; i<size; i++) {
+//        audioData[i] = buffer[i];
+//    }
+//    AudioQueueEnqueueBuffer(audioQueue, myaudioBuffer, 0, NULL);
+//    
+//    return 0;
+//}
+//
 
-static void BufferCallback(void * inUserData,AudioQueueRef inAQ,AudioQueueBufferRef buffer)
+
+
+
+static void audioCatureCallback(void * inUserData,AudioQueueRef inAQ, AudioQueueBufferRef inBuffer)
 {
-    NSLog(@"处理了音频数据大小为：%u",(unsigned int)buffer->mAudioDataByteSize);
-    Player * myplayer = (__bridge Player *)inUserData;
-    [myplayer.delegate fillPCMBuffer:myplayer->samplebuffer bufferSize:myplayer->samplebuffer_size];
-    //[myplayer.de]
-    
+    Player * myPlayer = (__bridge Player *)inUserData;
+    [myPlayer.delegate fillPCMBuffer:(uint8_t *)inBuffer->mAudioData bufferSize:inBuffer->mAudioDataByteSize];
 }
-
-
-/*
--(void)fillBuffer:(AudioQueueRef)audioQueue queueBuffer:(AudioQueueBufferRef)buffer
+-(int)createAudioQueueFilledBuffer:(AudioStreamBasicDescription)audioFormat callback:(id<PlayerDelegate>)delegate
 {
-    if (audioDataCurrent + AUDIO_MIN_SIZE_PER_FRAME <audioDataLength) {
-        if (audioDataCurrent + AUDIO_MIN_SIZE_PER_FRAME  >4096) {
-            memcpy(buffer->mAudioData, zhBuffer+(audioDataCurrent % AUDIO_MIN_SIZE_PER_FRAME), (AUDIO_MIN_SIZE_PER_FRAME - audioDataCurrent));
-            audioDataCurrent = 0;
-            buffer->mAudioDataByteSize = (AUDIO_MIN_SIZE_PER_FRAME - audioDataCurrent);
-        }
-        memcpy(buffer->mAudioData, zhBuffer + (audioDataCurrent % 5000), AUDIO_MIN_SIZE_PER_FRAME);
-        AudioQueueEnqueueBuffer(audioQueue, buffer, 0, NULL);
-    }
-    
-    
-}
- 
- */
-
-
--(int)delegateFillcallback:PCMBuffer daili:(id<PlayerDelegate>)callback
-{
-    callback = _delegate;
-    
-    OSStatus status = AudioQueueNewOutput(&audioDesc, BufferCallback, (__bridge void *)self, NULL, NULL, 0, &audioQueue);
+    audioFormat = audioDesc;
+    delegate = self;
+    OSStatus status = AudioQueueNewOutput(&audioDesc, audioCatureCallback, (__bridge void *)(self), NULL, NULL, 0, &audioQueue);
     if (status != noErr) {
         return -1;
     }
-    for (int i = 0; i<AUDIO_BUFFER_SIZE; i++) {
+    for (int i = 0; i < 3; i++) {
         status = AudioQueueAllocateBuffer(audioQueue, AUDIO_MIN_SIZE_PER_FRAME, &inAudioBuffers[i]);
-//        if (status == noErr) {
-//            status = AudioQueueEnqueueBuffer(audioQueue, inAudioBuffers[i], 0, NULL);
-//        }
-    }
-    return 0;
-}
-
-
-
-//-(void)createAudioQueue
-//{
-//    [self audioCleanup];
-//    
-//    AudioQueueNewOutput(&(audioDesc), BufferCallback, (__bridge void *)self, nil, nil, 0, &audioQueue);
-//    if (audioQueue) {
-//        //添加buffer区
-//        for (int i = 0; i<AUDIO_MIN_SIZE_PER_FRAME; i++) {
-//            int result = AudioQueueAllocateBuffer(audioQueue, AUDIO_MIN_SIZE_PER_FRAME, &inAudioBuffers[i]);
-//            NSLog(@"audioQueueAllocateBuffer  i = %d result = %d",i,result);
-//        }
-//    }
-//    
-//}
-
--(void)audioCleanup
-{
-    if (audioQueue) {
-        [self stopAudio];
-        for (int i =0; i< AUDIO_BUFFER_SIZE; i++) {
-            AudioQueueFreeBuffer(audioQueue,inAudioBuffers[i]);
-            inAudioBuffers[i] = nil;
+        if (status == noErr) {
+            status = AudioQueueEnqueueBuffer(audioQueue, inAudioBuffers[i], 0, NULL);
         }
-        audioQueue = nil;
     }
-}
-
--(void)stopAudio
-{
-    AudioQueueFlush(audioQueue);
-    AudioQueueReset(audioQueue);
-    AudioQueueStop(audioQueue, true);
-}
-
-
-
--(int)PCMBuffer:(uint8_t *)buffer bufferSize:(uint32_t)size
-{
-    AudioQueueBufferRef  myaudioBuffer =NULL;
-    myaudioBuffer->mAudioDataByteSize = size;
-    //(Byte *)myaudioBuffer->mAudioData = (Byte *)buffer;
-    Byte * audioData = (Byte *)myaudioBuffer->mAudioData;
-    for (int i = 0; i<size; i++) {
-        audioData[i] = buffer[i];
-    }
-    AudioQueueEnqueueBuffer(audioQueue, myaudioBuffer, 0, NULL);
-    
     return 0;
 }
-
-
-
-
-
-
-
-
-
+-(int)fillPCMBuffer:(uint8_t *)buffer bufferSize:(uint32_t)size
+{
+    return 0;
+}
 
 
 

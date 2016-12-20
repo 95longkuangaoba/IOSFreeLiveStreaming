@@ -22,11 +22,11 @@
 
 
 //#import "aacDecoder.h"
-@interface Player : NSObject<H264HardDecoderDelegate>
+@interface Player : NSObject<H264HardDecoderDelegate,PlayerDelegate>
 
 
 @property(weak,nonatomic)id<PlayerDelegate> delegate;
--(void)audioPlay;
+-(int)audioPlay;
 
 
 //- (void)play:(void*)pcmData length:(unsigned int)length;
